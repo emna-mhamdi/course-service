@@ -1,0 +1,6 @@
+com\university\course\dao\CourseDAO.class
+com\university\course\model\Course.class
+com\university\course\ws\CourseServiceImpl.class
+com\university\course\ws\CourseService.class
+com\university\course\CourseServicePublisher.class
+com\university\course\util\HibernateUtil.class
