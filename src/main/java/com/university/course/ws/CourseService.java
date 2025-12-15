@@ -1,3 +1,4 @@
+// ==================== CourseService.java (INTERFACE CORRIGÉE) ====================
 package com.university.course.ws;
 
 import com.university.course.model.Course;
@@ -6,38 +7,27 @@ import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 import java.util.List;
 
-@WebService
+@WebService(serviceName = "CourseService")
 public interface CourseService {
-
+    
     @WebMethod
-    Course createCourse(
-            @WebParam(name = "courseCode") String courseCode,
-            @WebParam(name = "courseName") String courseName,
-            @WebParam(name = "description") String description,
-            @WebParam(name = "credits") int credits,
-            @WebParam(name = "instructor") String instructor,
-            @WebParam(name = "capacity") int capacity,
-            @WebParam(name = "semester") String semester
-    );
-
+    Course createCourse(@WebParam(name = "course") Course course);
+    
     @WebMethod
-    Course getCourse(@WebParam(name = "id") Long id);
-
+    Course getCourseById(@WebParam(name = "id") Long id);
+    
+    @WebMethod
+    Course getCourseByCourseCode(@WebParam(name = "courseCode") String courseCode);
+    
     @WebMethod
     List<Course> getAllCourses();
-
+    
     @WebMethod
-    Course updateCourse(
-            @WebParam(name = "id") Long id,
-            @WebParam(name = "courseCode") String courseCode,
-            @WebParam(name = "courseName") String courseName,
-            @WebParam(name = "description") String description,
-            @WebParam(name = "credits") int credits,
-            @WebParam(name = "instructor") String instructor,
-            @WebParam(name = "capacity") int capacity,
-            @WebParam(name = "semester") String semester
-    );
-
+    Course updateCourse(@WebParam(name = "course") Course course);
+    
     @WebMethod
-    String deleteCourse(@WebParam(name = "id") Long id);
+    boolean deleteCourse(@WebParam(name = "id") Long id);
+    
+    @WebMethod
+    List<Course> getCoursesBySemester(@WebParam(name = "semester") String semester);
 }
